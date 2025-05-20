@@ -1,0 +1,80 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cargo",
+      "command": "build",
+      "problemMatcher": ["$rustc"],
+      "group": "build",
+      "label": "rust: cargo build"
+    },
+    {
+      "type": "cargo",
+      "command": "test",
+      "problemMatcher": ["$rustc"],
+      "group": "test",
+      "label": "Unit tests"
+    },
+    {
+      "type": "cargo",
+      "command": "clean",
+      "problemMatcher": ["$rustc"],
+      "group": "build",
+      "label": "rust: cargo clean"
+    },
+    {
+      "type": "cargo",
+      "command": "build",
+      "args": ["--release"],
+      "label": "rust: cargo build --release"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "args": ["--","--net", "172.28.0.0", "--subnets", "10 20 20 20"],
+      "label": "run text output"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "args": ["--","--net", "172.28.0.0", "--subnets", "10 20 20 20", "--json"],
+      "label": "run json output"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "args": ["--","--help"],
+      "label": "run --help"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "args": ["--","-d"],
+      "label": "run -d"
+    },
+    {
+      "type": "cargo",
+      "command": "run",
+      "args": ["--","--net", "172.596.0.0", "--subnets", "10 20 20 20", "--json"],
+      "label": "run wrong network"
+    },
+    {
+      "label": "Run with cargo watch",
+      "type": "shell",
+      "command": "cargo",
+      "args": [
+        "watch",
+        "-w",
+        "./src",
+        "-x",
+        "run -- --net \"172.28.0.0\" --subnets \"10 20 20 20\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$rustc"],
+      "detail": "Runs the project with cargo watch"
+    }
+  ]
+}
